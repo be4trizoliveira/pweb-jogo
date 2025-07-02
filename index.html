@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pedra, Papel e Tesoura</title>
+    <script>
+        const sorteioComputador = ["pedra", "papel", "tesoura"];
+        let partida = true;
+        function resultado(jogadaPessoa, jogadaComputador) {
+            if (jogadaPessoa == jogadaComputador) {
+                return "Empate.";
+            }
+            else if ((jogadaPessoa == "pedra" && jogadaComputador == "tesoura") || (jogadaPessoa == "papel" && jogadaComputador == "pedra") || (jogadaPessoa == "tesoura" && jogadaComputador == "papel")){
+                return "Você venceu.";
+            }
+            else if ((jogadaPessoa == "tesoura" && jogadaComputador == "pedra") || (jogadaPessoa == "pedra" && jogadaComputador == "papel") || (jogadaPessoa == "papel" && jogadaComputador == "tesoura")){
+                return "O computador venceu.";
+            }else{
+                return "A partida não foi realizada da forma correta.";
+            }
+        }
+
+        while (partida){
+            let jogadaPessoa;
+            do{
+                jogadaPessoa = prompt("Digite a sua jogada (Pedra, Papel ou Tesoura): ").toLowerCase().trim();
+            }
+            while (jogadaPessoa != "pedra" && jogadaPessoa != "papel" && jogadaPessoa != "tesoura");
+            const jogadaComputador = sorteioComputador[Math.floor(Math.random() * 3)];
+            alert("A jogada do computador foi: " + jogadaComputador);
+            const resultadoVisivel = resultado(jogadaPessoa, jogadaComputador);
+            alert(resultadoVisivel);
+            const escolha = prompt("Deseja jogar novamente? (digite Sim ou Não): ").toLowerCase().trim();
+            if (escolha != "sim") {
+                partida = false;
+            }
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>
